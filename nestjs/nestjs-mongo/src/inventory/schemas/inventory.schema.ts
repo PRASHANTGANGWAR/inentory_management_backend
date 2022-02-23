@@ -11,16 +11,16 @@ export class Inventory {
     @Prop({required: true })
     clientId: number;
 
-    @Prop({required: true })
+    @Prop({ unique: true}) // R
     originalSealId: string;
 
     @Prop()
-    currentSealId: string;
+    currentSealId: string; // R new seal id
 
     @Prop()
-    coinCount: number;
+    weight: number;
 
-    @Prop()
+    @Prop({default: 0})
     sealStatus: boolean;
 
     @Prop()
@@ -31,12 +31,12 @@ export class Inventory {
 
     @Prop()
     previousCoinCount: number;
-
-    @Prop({ default: false })
-    initialSetup: boolean; // on first time login 
     
     @Prop()
     documentPath: string; // document details uploaded
+
+    @Prop({default: 0})
+    redemptionStatus: number;
     
 }
 

@@ -12,6 +12,11 @@ export class UpdateStatusDto {
     status: boolean;
 }
 
+export class UpdateStatusBody {
+    status: boolean;
+    email: string;
+}
+
 export class passwordDto {
     newPassword: string;
     oldPassword: string;

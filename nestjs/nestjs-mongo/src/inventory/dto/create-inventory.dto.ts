@@ -1,14 +1,41 @@
 export class CreateInventoryDto {
+    inventoryId: string //
     clientId: number;
-    originalSealId: string;
+    originalSealId: string; 
     currentSealId: string;
     coinCount: number;
-    tokenCount: number;
     sealStatus: boolean;
     currentCoinCount: number;
-    currentTokenCount: number;
     previousSealId: number;
     previousCoinCount: number;
-    initialSetup: boolean;
+    documentPath: string;
+}
+
+export class InwardInventoryDto {
+    inventoryId: string //
+    clientId: number;
+    currentSealId: string; 
+    originalSealId: string; 
+    previousCoinCount : number;
+    currentCoinCount: number;
+    documentPath: string;
+}
+
+export class ReqInwardingInventoryDto {
+    inventoryId: string //
+    clientId: number;
+    currentSealId: string; 
+    originalSealId: string; 
+    documentPath: string;
+    noOfCoin: number;
+}
+
+export class OutwardingInventoryDto {
+    inventoryId: string //
+    clientId: number;
+    currentSealId: string; 
+    originalSealId: string; 
+    previousCoinCount: number;
+    currentCoinCount: number;
     documentPath: string;
 }

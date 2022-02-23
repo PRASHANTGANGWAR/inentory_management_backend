@@ -23,12 +23,14 @@ export class User {
     @Prop({ required: true })
     mobileNo: number;
 
-    @Prop({ required: true })
+    @Prop({ default: 'Test@123'})
     password: string;
 
     @Prop({ default: false })
     status: boolean; 
 
+    @Prop({ default: false })
+    initialSetup: boolean; // on first time login 
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

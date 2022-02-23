@@ -23,3 +23,7 @@ export class passwordDto {
 export class UpdatePasswordDto {
     password: string;
 }
+export class clientDetails {
+    clientId: string;
+    apiToken: string;
+}

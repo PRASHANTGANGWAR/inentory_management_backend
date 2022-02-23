@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { FilterQuery, Model } from "mongoose";
 import { Inventory, InventoryDocument } from "./schemas/inventory.schema";
+import { InwardInventoryDto } from './dto/create-inventory.dto'
 
 @Injectable()
 export class InventoryRepository {
@@ -15,6 +16,11 @@ export class InventoryRepository {
     }
 
     async create(user: Inventory): Promise<Inventory> {
+        const newUser = new this.userModel(user);
+        return newUser.save()
+    }
+
+    async createInwarding(user: InwardInventoryDto): Promise<Inventory> {
         const newUser = new this.userModel(user);
         return newUser.save()
     }
