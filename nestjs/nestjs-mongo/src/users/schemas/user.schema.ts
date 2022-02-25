@@ -27,10 +27,16 @@ export class User {
     password: string;
 
     @Prop({ default: false })
-    status: boolean; 
+    status: boolean; // active or inactive
 
     @Prop({ default: false })
     initialSetup: boolean; // on first time login 
+
+    @Prop({ default: Date.now })
+    createdAt: Date;
+
+    @Prop({ default: Date.now })
+    updatedAt: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

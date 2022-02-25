@@ -11,7 +11,7 @@ export class UsersRepository {
     }
 
     async find(usersFilterQuery): Promise<User[]> {
-        return this.userModel.find(usersFilterQuery)
+        return this.userModel.find(usersFilterQuery).sort({ createdAt : -1 }).limit(10)
     }
 
     async create(user: CreateUserDto): Promise<User> {

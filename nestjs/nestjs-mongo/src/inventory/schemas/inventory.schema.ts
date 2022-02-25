@@ -18,16 +18,16 @@ export class Inventory {
     currentSealId: string; // R new seal id
 
     @Prop()
+    previousSealId: number;
+
+    @Prop()
     weight: number;
 
-    @Prop({default: 0})
-    sealStatus: boolean;
+    @Prop()
+    originalCoinCount: number;
 
     @Prop()
     currentCoinCount: number;
-
-    @Prop()
-    previousSealId: number;
 
     @Prop()
     previousCoinCount: number;
@@ -36,8 +36,16 @@ export class Inventory {
     documentPath: string; // document details uploaded
 
     @Prop({default: 0})
-    redemptionStatus: number;
-    
+    sealStatus: boolean; // 0 > new , 1 replaced
+
+    @Prop({default: 0})
+    redemptionStatus: number; // 0 > fresh , 1 > redeemed
+
+    @Prop({ default: Date.now })
+    createdAt: Date;
+
+    @Prop({ default: Date.now })
+    updatedAt: Date;
 }
 
 export const InventorySchema = SchemaFactory.createForClass(Inventory); 

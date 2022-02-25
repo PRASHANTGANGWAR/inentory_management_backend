@@ -1,10 +1,10 @@
-import { Body, Controller, Get, HttpCode, Param, Patch, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpException, Param, Patch, Post, Res } from '@nestjs/common';
+import { AuthService } from 'src/auth/auth.service';
 import { CreateUserDto, loginUserDto } from './dto/create-user.dto';
 import { UpdateUserDto, passwordDto, UpdateStatusDto, UpdatePasswordDto, UpdateStatusBody } from './dto/update-user.dto';
-
 import { User } from './schemas/user.schema';
 import { UsersService } from './users.service';
-
+import { token, status_code } from './../app.properties'
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -31,13 +31,14 @@ export class UsersController {
     console.log(loginUserDto, "loginUserDto")
     const user = await this.usersService.getUserByEmail(loginUserDto.email);
     console.log(user, "======user ")
+    const dummyJwtToken = token;
     if(user && loginUserDto.password == user.password){
       // create token
       console.log("Logged In Successfully")
-      return { message: "Logged In Successfully", success: true};
+      return {  success: true, message: "Logged In Successfully", data:{token: dummyJwtToken}};
     } else {
       console.log("Invalid Credentials")
-      return { message: "Invalid Credentials", success: false};
+      throw new HttpException('Bad request', status_code.BAD_REQUEST_STATUS_CODE);
     }
   }
 

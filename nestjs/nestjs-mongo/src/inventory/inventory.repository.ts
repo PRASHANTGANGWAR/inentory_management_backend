@@ -12,7 +12,8 @@ export class InventoryRepository {
     }
 
     async find(usersFilterQuery): Promise<Inventory[]> {
-        return this.userModel.find(usersFilterQuery)
+        console.log(usersFilterQuery, "--------query")
+        return this.userModel.find(usersFilterQuery).sort({ createdAt : -1 }).limit(10);
     }
 
     async create(user: Inventory): Promise<Inventory> {

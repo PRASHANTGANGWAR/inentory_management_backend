@@ -40,6 +40,25 @@ export class InventoryService {
         })
     }
 
+
+    // async updateInventory(
+    //     clientId,
+    //     originalSealId,
+    //     currentSealId,
+    //     currentCoinCount,
+    //     previousCoinCount,
+    //     documentPath): Promise<Inventory> {
+    //     return this.inventoryRepository.createInwarding({
+    //         inventoryId: uuidv4(),
+    //         clientId,
+    //         originalSealId,
+    //         currentSealId,
+    //         currentCoinCount,
+    //         previousCoinCount,
+    //         documentPath
+    //     })
+    // }
+
     // async createInventory(clientId, originalSealId,
     //     currentSealId,
     //     coinCount,
@@ -61,8 +80,8 @@ export class InventoryService {
     //     })
     // }
 
-    async updateInventory(inventoryId: string, invwntoryUpdates: UpdateInventoryDto): Promise<Inventory> {
-        return this.inventoryRepository.findOneAndUpdate({ inventoryId }, invwntoryUpdates);
+    async updateInventory(inventoryId: string, inventoryUpdates: UpdateInventoryDto): Promise<Inventory> {
+        return this.inventoryRepository.findOneAndUpdate({ inventoryId }, inventoryUpdates);
     }
 
     

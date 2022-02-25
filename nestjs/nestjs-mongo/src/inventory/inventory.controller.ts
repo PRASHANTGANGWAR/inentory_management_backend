@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Patch, Post, UploadedFiles, UploadedFile, UseInterceptors, HttpCode } from '@nestjs/common';
-import { CreateInventoryDto, InwardInventoryDto, ReqInwardingInventoryDto } from './dto/create-inventory.dto';
+import { CreateInventoryDto, InwardInventoryDto, OutwardingInventoryDto, ReqInwardingInventoryDto } from './dto/create-inventory.dto';
 import { UpdateInventoryDto, clientDetails } from './dto/update-inventory.dto';
 
 import { Inventory } from './schemas/inventory.schema';
@@ -45,14 +45,14 @@ export class InventoryController {
   }
 
 
-  // @HttpCode(200)
-  // @Post('outwarding')
-  // async outwardInventory(@Body() inwardInventoryDto: ReqInwardingInventoryDto): Promise<any> {
-  //   console.log(inwardInventoryDto, "inwardInventoryDto")
+  @HttpCode(200)
+  @Post('outwarding')
+  async outwardInventory(@Body() outwardingInventoryDto: OutwardingInventoryDto): Promise<any> {
+    console.log(outwardingInventoryDto, "inwardInventoryDto")
 
-  //   // { clientId: 1, currentSealId: 'test', weight: '100', noOfCoin: '100' } createInventoryDto
-  //   return this.inventoryService.createInventory(inwardInventoryDto.clientId, inwardInventoryDto.currentSealId, inwardInventoryDto.currentSealId, inwardInventoryDto.noOfCoin, inwardInventoryDto.noOfCoin, documentPath:  UploadedFile.key )
-  // }
+    // { clientId: 1, currentSealId: 'test', weight: '100', noOfCoin: '100' } createInventoryDto
+    // return this.inventoryService.createInventory()
+  }
 
   @Patch(':inventoryId')
   async updateInventory(@Param('inventoryId') inventoryId: string, @Body() UpdateInventoryDto: UpdateInventoryDto): Promise<Inventory> {
