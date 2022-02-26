@@ -15,8 +15,8 @@ export class InwardInventoryDto {
     inventoryId: string //
     clientId: number;
     currentSealId: string; 
-    originalSealId: string; 
-    previousCoinCount : number;
+    originalSealId: string;
+    originalCoinCount: string 
     currentCoinCount: number;
     documentPath: string;
 }
@@ -31,11 +31,21 @@ export class ReqInwardingInventoryDto {
 }
 
 export class OutwardingInventoryDto {
+    clientId: number;
+    currentSealId: string; 
+    selectSeal: string;
+    noOfCoin: number
+}
+
+
+export class createAltredSealData {
     inventoryId: string //
     clientId: number;
     currentSealId: string; 
     originalSealId: string; 
     previousCoinCount: number;
+    originalCoinCount : number
     currentCoinCount: number;
     documentPath: string;
+    previousSealId: string;
 }

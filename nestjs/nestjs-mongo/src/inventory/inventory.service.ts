@@ -27,58 +27,49 @@ export class InventoryService {
         originalSealId,
         currentSealId,
         currentCoinCount,
-        previousCoinCount,
+        originalCoinCount,
         documentPath): Promise<Inventory> {
         return this.inventoryRepository.createInwarding({
             inventoryId: uuidv4(),
             clientId,
             originalSealId,
             currentSealId,
+            originalCoinCount,
             currentCoinCount,
-            previousCoinCount,
             documentPath
         })
     }
+// noOfCoin : purane - new count
 
+    async updateOutWrdingInventory(
+        currentSealId,
+        remainingCoin,
+        selectSeal
+        ): Promise<Inventory> {
+        return this.inventoryRepository.findOneAndUpdate({  inventoryId: selectSeal }, { sealStatus: true, currentSealId: currentSealId, currentCoinCount: 0, redemptionStatus: true });
+    }
 
-    // async updateInventory(
-    //     clientId,
-    //     originalSealId,
-    //     currentSealId,
-    //     currentCoinCount,
-    //     previousCoinCount,
-    //     documentPath): Promise<Inventory> {
-    //     return this.inventoryRepository.createInwarding({
-    //         inventoryId: uuidv4(),
-    //         clientId,
-    //         originalSealId,
-    //         currentSealId,
-    //         currentCoinCount,
-    //         previousCoinCount,
-    //         documentPath
-    //     })
-    // }
-
-    // async createInventory(clientId, originalSealId,
-    //     currentSealId,
-    //     coinCount,
-    //     currentCoinCount,
-    //     previousSealId,
-    //     previousCoinCount,
-    //     documentPath): Promise<Inventory> {
-    //     return this.inventoryRepository.create({
-    //         inventoryId: uuidv4(),
-    //         clientId,
-    //         originalSealId,
-    //         currentSealId,
-    //         coinCount,
-    //         sealStatus,
-    //         currentCoinCount,
-    //         previousSealId,
-    //         previousCoinCount,
-    //         documentPath
-    //     })
-    // }
+    async createAltredSealData(clientId,
+        originalSealId,
+        currentSealId,
+        previousSealId,
+        currentCoinCount,
+        originalCoinCount,
+        previousCoinCount,
+        documentPath): Promise<Inventory> {
+            const sealStatus = true //  
+        return this.inventoryRepository.createAltredSealData({
+            inventoryId: uuidv4(),
+            clientId,
+            originalSealId,
+            currentSealId,
+            currentCoinCount,
+            originalCoinCount,
+            previousSealId,
+            previousCoinCount,
+            documentPath,
+        })
+    }
 
     async updateInventory(inventoryId: string, inventoryUpdates: UpdateInventoryDto): Promise<Inventory> {
         return this.inventoryRepository.findOneAndUpdate({ inventoryId }, inventoryUpdates);

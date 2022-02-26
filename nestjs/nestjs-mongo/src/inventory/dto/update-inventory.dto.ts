@@ -6,7 +6,7 @@ export class UpdateInventoryDto {
     sealStatus: boolean;
     currentCoinCount: number;
     currentTokenCount: number;
-    previousSealId: number;
+    previousSealId: string;
     previousCoinCount: number;
 }
 

@@ -11,14 +11,14 @@ export class Inventory {
     @Prop({required: true })
     clientId: number;
 
-    @Prop({ unique: true}) // R
+    @Prop() // R
     originalSealId: string;
 
     @Prop()
     currentSealId: string; // R new seal id
 
     @Prop()
-    previousSealId: number;
+    previousSealId: string;
 
     @Prop()
     weight: number;
@@ -35,11 +35,11 @@ export class Inventory {
     @Prop()
     documentPath: string; // document details uploaded
 
-    @Prop({default: 0})
+    @Prop({default: false})
     sealStatus: boolean; // 0 > new , 1 replaced
 
-    @Prop({default: 0})
-    redemptionStatus: number; // 0 > fresh , 1 > redeemed
+    @Prop({default: false})
+    redemptionStatus: boolean; // 0 > fresh , 1 > redeemed
 
     @Prop({ default: Date.now })
     createdAt: Date;

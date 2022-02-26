@@ -23,7 +23,7 @@ export class User {
     @Prop({ required: true })
     mobileNo: number;
 
-    @Prop({ default: 'Test@123'})
+    @Prop({ default: 'Test@123' })
     password: string;
 
     @Prop({ default: false })
