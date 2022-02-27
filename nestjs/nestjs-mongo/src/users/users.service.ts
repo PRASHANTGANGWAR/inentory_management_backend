@@ -17,13 +17,12 @@ export class UsersService {
     async getUsers(): Promise<User[]> {
         return this.usersRepository.find({});
     }
-    async createUser(firstName: string, lastName: string, email: string, empId: string, mobileNo: number): Promise<User> {
+    async createUser(firstName: string, lastName: string, email: string, mobileNo: number): Promise<User> {
         return this.usersRepository.create({
             userId: uuidv4(),
             firstName,
             lastName,
             email,
-            empId,
             mobileNo
         })
     }

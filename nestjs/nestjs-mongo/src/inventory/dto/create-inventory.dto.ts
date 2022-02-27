@@ -48,4 +48,5 @@ export class createAltredSealData {
     currentCoinCount: number;
     documentPath: string;
     previousSealId: string;
+    sealStatus: boolean;
 }

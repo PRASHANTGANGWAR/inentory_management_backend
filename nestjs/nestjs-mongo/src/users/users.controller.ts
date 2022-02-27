@@ -22,7 +22,7 @@ export class UsersController {
   @HttpCode(200)
   @Post()
   async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
-    return this.usersService.createUser(createUserDto.firstName, createUserDto.lastName, createUserDto.email, createUserDto.empId, createUserDto.mobileNo)
+    return this.usersService.createUser(createUserDto.firstName, createUserDto.lastName, createUserDto.email, createUserDto.mobileNo)
   }
 
   @HttpCode(200)

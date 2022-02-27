@@ -20,7 +20,7 @@ export class InventoryService {
         return this.inventoryRepository.findOne({ inventoryId })
     }
     async getInventory(): Promise<Inventory[]> {
-        return this.inventoryRepository.find({});
+        return this.inventoryRepository.find({redemptionStatus: redemptionStatusEnum.FRESH });
     }
     async createInventory(
         clientId,
@@ -46,7 +46,7 @@ export class InventoryService {
         remainingCoin,
         selectSeal
         ): Promise<Inventory> {
-        return this.inventoryRepository.findOneAndUpdate({  inventoryId: selectSeal }, { sealStatus: true, currentSealId: currentSealId, currentCoinCount: 0, redemptionStatus: true });
+        return this.inventoryRepository.findOneAndUpdate({  inventoryId: selectSeal }, { redemptionStatus: true });
     }
 
     async createAltredSealData(clientId,
@@ -68,6 +68,7 @@ export class InventoryService {
             previousSealId,
             previousCoinCount,
             documentPath,
+            sealStatus
         })
     }
 
@@ -81,7 +82,7 @@ export class InventoryService {
     }
 
     async getAllSeals(clientId): Promise<Inventory[]> {
-        return this.inventoryRepository.find({clientId: clientId, sealStatus: sealStatus.NEW });
+        return this.inventoryRepository.find({clientId: clientId, redemptionStatus: redemptionStatusEnum.FRESH });
     }
 
     

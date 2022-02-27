@@ -18,9 +18,6 @@ export class User {
     email: string;
 
     @Prop({ required: true })
-    empId: string;
-
-    @Prop({ required: true })
     mobileNo: number;
 
     @Prop({ default: 'Test@123' })
